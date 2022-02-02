@@ -31,7 +31,17 @@ namespace Task.Client
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public decimal Amount { get; set; }
+        public string amount;
+
+        public string Amount
+        {
+            get { return result; }
+            set
+            {
+                result = value;
+                OnPropertyChanged();
+            }
+        }
 
         private string result;
 
@@ -53,13 +63,23 @@ namespace Task.Client
         private async void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
             HttpClient client = new HttpClient();
-            //var inputValue = Convert.ToDecimal(Amount.ToString("F2").Replace(',', '.'));
+            try
+            {
+                decimal.Parse(Amount);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("You entered wrong data!");
+                Amount = "";
+            }
+
+            Amount = Amount.ToString().Replace(',', '.');
 
             var response = await client.GetAsync($"https://localhost:44393/api/calculator/{Amount}/");
             var responseContent = response.Content.ReadAsStringAsync();
 
             Result = responseContent.Result;
-
+            Amount = "";
 
 
         }
