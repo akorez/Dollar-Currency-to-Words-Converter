@@ -1,0 +1,40 @@
+﻿<Window x:Class="Task.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task.Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="450">
+    <Grid>
+        <StackPanel Margin="30">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
+                <Label Content="Currency :" FontWeight="Bold" FontSize="20"></Label>
+            <TextBox Name="txtBoxCurrency" 
+                     Text ="{Binding Amount}"
+                     HorizontalAlignment="Center" 
+                     Width="200" 
+                     BorderThickness="2" />
+            </StackPanel>
+            <Button Name="btnCalculate"
+                    Content="CALCULATE"
+                    HorizontalAlignment="Center"
+                    FontSize="20"
+                    Margin="15"
+                    FontWeight="Bold"
+                    Width="150"
+                    Click="btnCalculate_Click"
+                    />
+            <TextBlock Name="txtblockResult"
+                       Text="{Binding Result}"
+                       HorizontalAlignment="Center"
+                       Width="350"
+                       TextWrapping="Wrap"
+                       Margin="10"
+                       FontSize="23"
+                       Foreground="Red"
+                       FontWeight="Bold"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
