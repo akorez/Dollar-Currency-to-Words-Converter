@@ -5,36 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="450">
+        Title="MainWindow" Height="200" Width="450" WindowStartupLocation="CenterScreen">
     <Grid>
-        <StackPanel Margin="30">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
-                <Label Content="Currency :" FontWeight="Bold" FontSize="20"></Label>
-            <TextBox Name="txtBoxCurrency" 
-                     Text ="{Binding Amount}"
-                     HorizontalAlignment="Center" 
-                     Width="200" 
-                     BorderThickness="2" />
-            </StackPanel>
-            <Button Name="btnCalculate"
-                    Content="CALCULATE"
-                    HorizontalAlignment="Center"
-                    FontSize="20"
-                    Margin="15"
-                    FontWeight="Bold"
-                    Width="150"
-                    Click="btnCalculate_Click"
-                    />
-            <TextBlock Name="txtblockResult"
-                       Text="{Binding Result}"
-                       HorizontalAlignment="Center"
-                       Width="350"
-                       TextWrapping="Wrap"
-                       Margin="10"
-                       FontSize="15"
-                       Foreground="Red"
-                       FontWeight="Bold"/>
-        </StackPanel>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Currency :" FontWeight="Bold" FontSize="12"></Label>
+        <TextBox Grid.Column="1" Name="txtBoxCurrency" 
+                 Margin="5 5 15 5"
+                 Text ="{Binding Path=Amount}"
+                 BorderThickness="2" />
+        <Button Grid.Column="1" Grid.Row="1" Name="btnCalculate"
+                Content="CALCULATE"
+                Margin="5 5 15 5"
+                Click="btnCalculate_Click"/>
+        <TextBlock 
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{Binding Path=Result}"
+            TextWrapping="Wrap"
+            Margin="5"
+            FontSize="15"
+            Foreground="Red"
+            FontWeight="Bold"/>
     </Grid>
 </Window>

@@ -45,14 +45,27 @@ namespace Task.ServerAPITest
         }
 
         [Theory]
-        [InlineData("0")]
-        [InlineData("0.00")]
-        [InlineData(".00")]
-        public async void InputValueIsZero_GetServiceTest_ReturnOKandZeroDollars(string amount)
+        [InlineData("0", "zero dollars")]
+        [InlineData("0.00", "zero dollars")]
+        [InlineData(".00", "zero dollars")]
+        [InlineData("1", "one dollar")]
+        [InlineData("01", "one dollar")]
+        [InlineData("1.00", "one dollar")]
+        [InlineData("25.1", "twenty-five dollars and ten cents")]
+        [InlineData("025.1", "twenty-five dollars and ten cents")]
+        [InlineData("025.10", "twenty-five dollars and ten cents")]
+        [InlineData("0.01", "zero dollars and one cent")]
+        [InlineData("00.01", "zero dollars and one cent")]
+        [InlineData("45100", "forty-five thousand one hundred dollars")]
+        [InlineData("45100.00", "forty-five thousand one hundred dollars")]
+        [InlineData("045100", "forty-five thousand one hundred dollars")]
+        [InlineData("999999999.99", "nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine dollars and ninety-nine cents")]
+        [InlineData("0999999999.99", "nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine dollars and ninety-nine cents")]
+        [InlineData("011012013.14", "eleven million twelve thousand thirteen dollars and fourteen cents")]
+        public async void InputValueIsValid_GetServiceTest_ReturnOKandValue(string amount, string expected)
         {
             //Arrange
             var client = new TestClientProvider().Client;
-            string expectedResult = "zero dollars";
 
             //Act
             var result = await client.GetAsync($"api/calculator/{amount}/");
@@ -60,117 +73,8 @@ namespace Task.ServerAPITest
 
             //Assert
             Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-            Assert.Equal(expectedResult, resultContent.Result);
+            Assert.Equal(expected, resultContent.Result);
         }
 
-        [Theory]
-        [InlineData("1")]
-        [InlineData("01")]
-        [InlineData("1.00")]
-        public async void InputValueIsOne_GetServiceTest_ReturnOKandOneDollar(string amount)
-        {
-            //Arrange
-            var client = new TestClientProvider().Client;
-            string expectedResult = "one dollar";
-
-            //Act
-            var result = await client.GetAsync($"api/calculator/{amount}/");
-            var resultContent = result.Content.ReadAsStringAsync();
-
-            //Assert
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-            Assert.Equal(expectedResult, resultContent.Result);
-        }
-
-        [Theory]
-        [InlineData("25.1")]
-        [InlineData("025.1")]
-        [InlineData("025.10")]
-        public async void InputValueIsValid_GetServiceTest_ReturnOKandValue_1(string amount)
-        {
-            //Arrange
-            var client = new TestClientProvider().Client;
-            string expectedResult = "twenty-five dollars and ten cents";
-
-            //Act
-            var result = await client.GetAsync($"api/calculator/{amount}/");
-            var resultContent = result.Content.ReadAsStringAsync();
-
-            //Assert
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-            Assert.Equal(expectedResult, resultContent.Result);
-        }
-
-        [Theory]
-        [InlineData("0.01")]
-        [InlineData("00.01")]
-        public async void InputValueIsValid_GetServiceTest_ReturnOKandValue_2(string amount)
-        {
-            //Arrange
-            var client = new TestClientProvider().Client;
-            string expectedResult = "zero dollars and one cent";
-
-            //Act
-            var result = await client.GetAsync($"api/calculator/{amount}/");
-            var resultContent = result.Content.ReadAsStringAsync();
-
-            //Assert
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-            Assert.Equal(expectedResult, resultContent.Result);
-        }
-
-        [Theory]
-        [InlineData("45100")]
-        [InlineData("45100.00")]
-        [InlineData("045100")]
-        public async void InputValueIsValid_GetServiceTest_ReturnOKandValue_3(string amount)
-        {
-            //Arrange
-            var client = new TestClientProvider().Client;
-            string expectedResult = "forty-five thousand one hundred dollars";
-
-            //Act
-            var result = await client.GetAsync($"api/calculator/{amount}/");
-            var resultContent = result.Content.ReadAsStringAsync();
-
-            //Assert
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-            Assert.Equal(expectedResult, resultContent.Result);
-        }
-
-        [Theory]
-        [InlineData("999999999.99")]
-        [InlineData("0999999999.99")]        
-        public async void InputValueIsValid_GetServiceTest_ReturnOKandValue_4(string amount)
-        {
-            //Arrange
-            var client = new TestClientProvider().Client;
-            string expectedResult = "nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine dollars and ninety-nine cents";
-
-            //Act
-            var result = await client.GetAsync($"api/calculator/{amount}/");
-            var resultContent = result.Content.ReadAsStringAsync();
-
-            //Assert
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-            Assert.Equal(expectedResult, resultContent.Result);
-        }
-
-        [Theory]
-        [InlineData("011012013.14")]
-        public async void InputValueIsValid_GetServiceTest_ReturnOKandValue_5(string amount)
-        {
-            //Arrange
-            var client = new TestClientProvider().Client;
-            string expectedResult = "eleven million twelve thousand thirteen dollars and fourteen cents";
-
-            //Act
-            var result = await client.GetAsync($"api/calculator/{amount}/");
-            var resultContent = result.Content.ReadAsStringAsync();
-
-            //Assert
-            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-            Assert.Equal(expectedResult, resultContent.Result);
-        }
     }
 }

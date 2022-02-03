@@ -126,37 +126,19 @@ namespace Task.ServerAPI.Controllers
         /// <returns>Returns text of number</returns>
         private static string ConvertNumbersBetweenTenToTwenty(int number)
         {
-            string result = "";
-            switch (number)
+            var result = number switch
             {
-                case 11:
-                    result = " eleven";
-                    break;
-                case 12:
-                    result = " twelve";
-                    break;
-                case 13:
-                    result = " thirteen";
-                    break;
-                case 14:
-                    result = " fourteen";
-                    break;
-                case 15:
-                    result = " fifteen";
-                    break;
-                case 16:
-                    result = " sixteen";
-                    break;
-                case 17:
-                    result = " seventeen";
-                    break;
-                case 18:
-                    result = " eighteen";
-                    break;
-                case 19:
-                    result = " nineteen";
-                    break;
-            }
+                11 => " eleven",
+                12 => " twelve",
+                13 => " thirteen",
+                14 => " fourteen",
+                15 => " fifteen",
+                16 => " sixteen",
+                17 => " seventeen",
+                18 => " eighteen",
+                19 => " nineteen",
+                _ => ""
+            };
 
             return result;
         }
