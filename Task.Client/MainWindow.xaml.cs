@@ -32,7 +32,7 @@ namespace Task.Client
             set
             {
                 _amount = value;
-                OnPropertyChanged(nameof(Amount));
+                OnPropertyChanged("Amount");
             }
         }
 
@@ -43,7 +43,7 @@ namespace Task.Client
             set
             {
                 _result = value;
-                OnPropertyChanged(nameof(Result));
+                OnPropertyChanged("Result");
             }
         }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="450" WindowStartupLocation="CenterScreen">
+        Title="Curreny To Word Converter" Height="200" Width="450" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -16,13 +16,14 @@
             <ColumnDefinition Width="100" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Currency :" FontWeight="Bold" FontSize="12"></Label>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Currency :" FontWeight="Bold" FontSize="15"></Label>
         <TextBox Grid.Column="1" Name="txtBoxCurrency" 
                  Margin="5 5 15 5"
                  Text ="{Binding Path=Amount}"
                  BorderThickness="2" />
         <Button Grid.Column="1" Grid.Row="1" Name="btnCalculate"
-                Content="CALCULATE"
+                Content="CONVERT"
+                FontSize="15"
                 Margin="5 5 15 5"
                 Click="btnCalculate_Click"/>
         <TextBlock 
