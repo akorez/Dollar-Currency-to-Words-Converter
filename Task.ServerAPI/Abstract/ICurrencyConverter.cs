@@ -8,6 +8,6 @@ namespace Task.ServerAPI.Abstract
 {
     public interface ICurrencyConverter
     {
-        ResultDTO CurrencyToWords(decimal amount);
+        ResultDTO ConvertCurrencyToWords(decimal amount);
     }
 }

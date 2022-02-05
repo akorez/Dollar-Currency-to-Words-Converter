@@ -83,7 +83,7 @@ namespace Task.Client
             HttpClient client = new HttpClient();
             var amount = _amount.Replace(',', '.');
 
-            var response = await client.GetAsync($"https://localhost:44393/api/calculator/{amount}/");
+            var response = await client.GetAsync($"https://localhost:44393/api/converter/{amount}/");
             var responseContent = response.Content.ReadAsStringAsync();
 
             Result = responseContent.Result;

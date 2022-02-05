@@ -11,13 +11,13 @@ namespace Task.ServerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CalculatorController : ControllerBase
+    public class ConverterController : ControllerBase
     {
         [HttpGet("{amount:decimal}")]
         public ActionResult<string> Get(decimal amount)
         {
             CurrencyConverter currencyConverter = new CurrencyConverter();
-            ResultDTO result = currencyConverter.CurrencyToWords(amount);
+            ResultDTO result = currencyConverter.ConvertCurrencyToWords(amount);
             
             return result.IsSuccess ? Ok(result.Words) : BadRequest(result.Words);
         }

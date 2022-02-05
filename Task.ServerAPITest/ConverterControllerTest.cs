@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Task.ServerAPITest
 {
-    public class CalculatorControllerTest
+    public class ConverterControllerTest
     {
         [Theory]
         [InlineData("1000000000")]
@@ -19,7 +19,7 @@ namespace Task.ServerAPITest
             string expectedResult = "Out of range error!";
 
             //Act
-            var result = await client.GetAsync($"api/calculator/{amount}/");
+            var result = await client.GetAsync($"api/converter/{amount}/");
             var resultContent = result.Content.ReadAsStringAsync();
            
             //Assert
@@ -36,7 +36,7 @@ namespace Task.ServerAPITest
             string expectedResult = "Negative value error!";
 
             //Act
-            var result = await client.GetAsync($"api/calculator/{amount}/");
+            var result = await client.GetAsync($"api/converter/{amount}/");
             var resultContent = result.Content.ReadAsStringAsync();
 
             //Assert
@@ -68,7 +68,7 @@ namespace Task.ServerAPITest
             var client = new TestClientProvider().Client;
 
             //Act
-            var result = await client.GetAsync($"api/calculator/{amount}/");
+            var result = await client.GetAsync($"api/converter/{amount}/");
             var resultContent = result.Content.ReadAsStringAsync();
 
             //Assert

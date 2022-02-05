@@ -18,7 +18,7 @@ namespace Task.ServerAPI.Concrete
         /// </summary>
         /// <param name="amount">Currency value from client</param>
         /// <returns> Words of currency that is sent</returns>
-        public ResultDTO CurrencyToWords(decimal amount)
+        public ResultDTO ConvertCurrencyToWords(decimal amount)
         {
             string calculatedResult = "";
 
@@ -38,7 +38,7 @@ namespace Task.ServerAPI.Concrete
                 return result;
             }
 
-            calculatedResult = IsAmoutZeroOrOneDollar(amount);
+            calculatedResult = IsAmountZeroOrOneDollar(amount);
 
             if (calculatedResult != "")
             {
@@ -74,7 +74,7 @@ namespace Task.ServerAPI.Concrete
             return result;
         }
 
-        private static string IsAmoutZeroOrOneDollar(decimal amount)
+        private static string IsAmountZeroOrOneDollar(decimal amount)
         {
             var result = amount switch
             {
