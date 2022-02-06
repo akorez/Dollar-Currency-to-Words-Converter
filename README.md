@@ -14,7 +14,7 @@ This repository contains a Client(WPF) - Server(Web API) based converter codes t
 
 ### Examples
 
-| <strong>INPUT</strong> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;   | <strong>OUTPUT</strong>        |
+| <strong>INPUT</strong> &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  | <strong>OUTPUT</strong>        |
 | ------------- | ------------- |
 |            0  | zero dollars  |
 | 1 | one dollar  |
