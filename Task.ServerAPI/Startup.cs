@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Task.ServerAPI.Abstract;
+using Task.ServerAPI.Concrete;
 
 namespace Task.ServerAPI
 {
@@ -32,6 +34,8 @@ namespace Task.ServerAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Task.ServerAPI", Version = "v1" });
             });
+
+            services.AddScoped<ICurrencyConverter, CurrencyConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
