@@ -8,6 +8,7 @@ This repository contains a Client(WPF) - Server(Web API) based converter codes t
 - <strong>WPF based client</strong>
 - <strong>WebAPI based server</strong>
 - <strong>Unit Test for Server</strong>
+- <strong>Built-in Dependency Injection(IoC Container) mechanism</strong>
 - <strong>The maximum number of dollars is 999 999 999</strong>
 - <strong>The maximum number of cents is 99</strong>
 - <strong>The separator between dollars and cents is a ‘,’ (comma)</strong>
